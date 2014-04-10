@@ -38,14 +38,22 @@
             }
           ]
         });
-  function reverseText(text) {
-          if (' ') {
-            return ' ';
-          }
-          var text = [test value];
-          text.reverse();
-          return fragment.trim().split(/\s+/).length;
+        
+        // Reverses text in the input string
+        function reverseText(text) {
+        // Return null if empty
+          if (text === null) {
+            return null; 
         }
+        // Make an empty string
+          var reversed = ' ';
+        // Loop backward over text
+          for (var index = text.length - 1; index >=0; index--) {
+        // Append character to new text
+          reversed += text[index];
+        }
+    return reversed;
+  }
         createExample('Reverse Text', {
           description: 'Create a function that reverses the characters in \
             a string',
