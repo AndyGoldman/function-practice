@@ -74,16 +74,26 @@
           ]
         });
 
+        // Transforms floating decimal number value to standard currency denominations
+        // Remove decimal by multiplying by 100
+        // List of denomination by values
+        // Loop through denominations
+        // If number is > denomination, subtract denomination value and get remainder (%)
+        // How many of denomination
+        // Update change with denomination
+        // Loop through function
+        // Update amount
+        // var denominations = [ {name: "hundreds", value: 10000}, {name: "Twenties", value: 2000}, name: "Nickels", value: 5} ];
         createExample('Tender Change', {
           description: 'Write a function that given a dollar amount returns \
             the change in bills and coins. For instance, given \
             <code>7.23</code> it should return: \
             <pre>{ fives: 1, ones: 2, dimes: 2, pennies: 3 }</pre>',
-          implementation: null,
+          implementation: tenderChange,
           validation: [
             {
               input: 7.23,
-              output: { fives: 1, ones: 2, dimes: 2, pennies: 5 }
+              output: { fives: 1, ones: 2, dimes: 2, pennies: 3 }
             }
           ]
         });
