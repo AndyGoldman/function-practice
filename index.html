@@ -75,15 +75,37 @@
         });
 
         // Transforms floating decimal number value to standard currency denominations
-        // Remove decimal by multiplying by 100
-        // List of denomination by values
-        // Loop through denominations
-        // If number is > denomination, subtract denomination value and get remainder (%)
-        // How many of denomination
-        // Update change with denomination
-        // Loop through function
-        // Update amount
-        // var denominations = [ {name: "hundreds", value: 10000}, {name: "Twenties", value: 2000}, name: "Nickels", value: 5} ];
+        function tenderChange (amount) {
+        // set up output variable
+          var change = {
+            twenties: 0,
+            tens: 0,
+            fives: 0,
+            ones: 0,
+            quarters: 0,
+            dimes: 0,
+            nickels: 0,
+            pennies: 0
+            };
+        
+          var bills = 0;
+          var coins = 0;
+          
+          if (amount>0){
+            bills = Math.floor(amount);
+            coins = Math.floor((amount - bills) % 1*100);
+            change.twenties = Math.floor (bills/20);
+            change.tens = Math.floor ((bills - (change.twenties * 20))/10);
+            change.fives = Math.floor ((bills - ((change.twenties * 20) - (change.tens * 10)))/5);
+            change.ones = bills % 5;
+            change.quarters = Math.floor (coins/25);
+            change.dimes = Math.floor ((coins - (change.quarters* 25))/10);
+            //change.nickels = Math.floor ((coins - ((change.quarters * 25)-(change.dimes * 10)))/5);
+            change.pennies = coins % 5;
+          }
+          return change;
+        };  
+        
         createExample('Tender Change', {
           description: 'Write a function that given a dollar amount returns \
             the change in bills and coins. For instance, given \
@@ -93,7 +115,7 @@
           validation: [
             {
               input: 7.23,
-              output: { fives: 1, ones: 2, dimes: 2, pennies: 3 }
+              output: { twenties: 0, tens: 0, fives: 1, ones: 2, quarters:0, dimes: 2, nickels: 0, pennies: 3 }
             }
           ]
         });
