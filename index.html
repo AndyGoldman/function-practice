@@ -100,10 +100,12 @@
             change.ones = bills % 5;
             change.quarters = Math.floor (coins/25);
             change.dimes = Math.floor ((coins - (change.quarters* 25))/10);
-            //change.nickels = Math.floor ((coins - ((change.quarters * 25)-(change.dimes * 10)))/5);
+            change.nickels = Math.floor ((coins - ((change.quarters * 25)-(change.dimes * 10)))/5);
             change.pennies = coins % 5;
           }
           return change;
+			//if change.twenties = 0 {
+				//return ''};
         };  
         
         createExample('Tender Change', {
@@ -113,11 +115,15 @@
             <pre>{ fives: 1, ones: 2, dimes: 2, pennies: 3 }</pre>',
           implementation: tenderChange,
           validation: [
-            {
-              input: 7.23,
-              output: { twenties: 0, tens: 0, fives: 1, ones: 2, quarters:0, dimes: 2, nickels: 0, pennies: 3 }
-            }
-          ]
+                        {
+                          input: 7.23,
+                          output: { twenties: 0, tens: 0, fives: 1, ones: 2, quarters: 0, dimes: 2, nickels: 0, pennies: 3 }
+                        },
+                        {
+                          input: 148.86,
+                          output: { twenties: 7, tens: 0, fives: 1, ones: 3, quarters: 3, dimes: 1, nickels: 0, pennies: 1}
+                        }                      
+                      ]
         });
 
         createExample('The Pluralizer', {
