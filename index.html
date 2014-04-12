@@ -95,21 +95,30 @@
             bills = Math.floor(amount);
             coins = Math.floor((amount - bills) % 1*100);
             if (bills>=20){
-				change.twenties = Math.floor (bills/20);
-				bills -= 20*change.twenties;
-			}
+							change.twenties = Math.floor (bills/20);
+							bills -= 20*change.twenties;
+						}
             if (bills>=10){
-				change.tens = Math.floor (bills/10);
-				bills -= 10*change.tens;
-			}
+							change.tens = Math.floor (bills/10);
+							bills -= 10*change.tens;
+						}
             if (bills>=5){
-				change.fives = Math.floor (bills/5);
-				bills -= 5*change.fives;
-			}
-            change.ones = bills % 5;
-            change.quarters = Math.floor (coins/25);
-            change.dimes = Math.floor ((coins - (change.quarters* 25))/10);
-            change.nickels = Math.floor ((coins - ((change.quarters * 25)+(change.dimes * 10)))/5);
+							change.fives = Math.floor (bills/5);
+							bills -= 5*change.fives;
+						}
+              change.ones = bills % 5;
+            if (coins>=25){
+              change.quarters = Math.floor (coins/25);
+							coins -= 25*change.quarters;
+						}
+						if (coins>=10){
+            	change.dimes = Math.floor ((coins - (change.quarters* 25))/10);
+							coins -= 10*change.dimes;
+						}
+						{if (coins>=5){
+            	change.nickels = Math.floor ((coins - ((change.quarters * 25)+(change.dimes * 10)))/5);
+							coins -= 5*change.nickels;
+						}
             change.pennies = coins % 5;
           }
           return change;
