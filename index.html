@@ -185,17 +185,21 @@
         });
 
         var movieList = [
-          'The Shawshank Redemption,1994,1043071',
-          'The Godfather,1972,732416',
-          'The Godfather: Part II,1974,474640',
-          'Pulp Fiction,1994,806431',
-          'The Dark Knight,2008,1017508',
-          '12 Angry Men,1957,255846',
-          'Schindler\'s List,1993,528900',
-          'The Lord of the Rings: The Return of the King,2003,738931',
-          'Fight Club,1999,791186',
-          'Star Wars: Episode V - The Empire Strikes Back,1980,503348'
+					{movie:'The Shawshank Redemption', year:1994, votes:1043071},
+					{movie:'The Godfather', year:1972, votes:732416},
+					{movie:'The Godfather: Part II', year:1974, votes:474640},
+					{movie:'Pulp Fiction', year:1994, votes:806431},
+					{movie:'The Dark Knight', year:2008, votes:1017508},
+					{movie:'12 Angry Men', year:1957, votes:255846},
+					{movie:'Schindler\'s List', year:1993, votes:528900},
+					{movie:'The Lord of the Rings: The Return of the King', year:2003, votes:738931},
+					{movie:'Fight Club', year:1999, votes:791186},
+					{movie:'Star Wars: Episode V - The Empire Strikes Back', year:1980, votes:503348}
         ];
+					
+					function movieParsing (movieList) {
+					movieList[year].sort()
+					};
 
         createExample('Movie Parsing', {
           description: "Given the following comma separated list of IMDb top \
@@ -206,7 +210,7 @@
             sorted by year.",
           implementation: null
         });
-			});
+			}
     </script>
 
   </body>
