@@ -77,7 +77,32 @@
         // Transforms floating decimal number value to standard currency denominations
         function tenderChange (amount) {
         // set up output variable
-          var change = {
+          
+					var denominations = {
+  					twenties: 2000,
+  					tens: 1000,
+  					fives: 500,
+  					ones: 100,
+  					quarters: 25,
+  					dimes: 10,
+  					nickels: 5,
+  					pennies: 1
+					};
+					function tenderChange(amount) {
+  					// convert to work in pennies
+  					amount = Math.floor(amount * 100);
+  					var change = {};
+  					// loop through the available denominations
+  						for(var key in denominations) {
+   						var value = denominations[key];
+    					if (amount >= value){
+      				change[key] = Math.floor(amount / value);
+      				amount -= value * change[key];
+    				}
+  				}
+  				return change;
+					}
+					/*var change = {
             twenties: 0,
             tens: 0,
             fives: 0,
@@ -122,7 +147,7 @@
             change.pennies = coins % 5;
           }
           return change;
-        };  
+        };  */
         
         createExample('Tender Change', {
           description: 'Write a function that given a dollar amount returns \
@@ -181,7 +206,7 @@
             sorted by year.",
           implementation: null
         });
-      });
+			});
     </script>
 
   </body>
